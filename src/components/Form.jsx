@@ -21,40 +21,47 @@ class Form extends React.Component {
       <>
         <input
           type="text"
+          name="cardName"
           onChange={ onInputChange }
           value={ cardName }
           data-testid="name-input"
         />
         <textarea
+          name="cardDescription"
           value={ cardDescription }
           onChange={ onInputChange }
           data-testid="description-input"
         />
         <input
           type="number"
+          name="cardAttr1"
           value={ cardAttr1 }
           onChange={ onInputChange }
           data-testid="attr1-input"
         />
         <input
           type="number"
+          name="cardAttr2"
           value={ cardAttr2 }
           onChange={ onInputChange }
           data-testid="attr2-input"
         />
         <input
           type="number"
+          name="cardAttr3"
           value={ cardAttr3 }
           onChange={ onInputChange }
           data-testid="attr3-input"
         />
         <input
           type="text"
+          name="cardImage"
           value={ cardImage }
           onChange={ onInputChange }
           data-testid="image-input"
         />
         <select
+          name="cardRare"
           value={ cardRare }
           onChange={ onInputChange }
           data-testid="rare-input"
@@ -65,6 +72,7 @@ class Form extends React.Component {
         </select>
         <input
           type="checkbox"
+          name="cardTrunfo"
           checked={ cardTrunfo }
           onChange={ onInputChange }
           data-testid="trunfo-input"
@@ -72,6 +80,7 @@ class Form extends React.Component {
         Super Trunfo ?
         <input
           type="button"
+          name="Salvar"
           disabled={ isSaveButtonDisabled }
           onClick={ onSaveButtonClick }
           value="Salvar"
