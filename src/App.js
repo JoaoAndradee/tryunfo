@@ -81,6 +81,19 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ false }
           isSaveButtonDisabled={ saveButton() }
+          // Requisito 06
+          onSaveButtonClick={ () => {
+            this.setState({
+              cardName: '',
+              cardDescription: '',
+              cardImage: '',
+              cardAttr1: '0',
+              cardAttr2: '0',
+              cardAttr3: '0',
+              cardRare: 'normal',
+            });
+          } }
+          // FIM
           onInputChange={ this.handleChange }
         />
         <Card
