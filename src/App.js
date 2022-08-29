@@ -10,8 +10,44 @@ class App extends React.Component {
     cardAttr2: '',
     cardAttr3: '',
     cardImage: '',
-    cardRare: '',
+    cardRare: 'normal',
     cardTrunfo: '',
+    saveButton: () => {
+      const {
+        cardName,
+        cardDescription,
+        cardImage,
+        cardRare,
+        cardAttr1,
+        cardAttr2,
+        cardAttr3,
+      } = this.state;
+      const MAX_POWER_ATTR = 90;
+      const MAX_POWER_TOTAL = 210;
+      if (
+        cardName.length > 0
+        && cardDescription.length > 0
+        && cardImage.length > 0
+        && cardRare.length > 0
+      ) {
+        if (
+          cardAttr1 > MAX_POWER_ATTR
+          || cardAttr2 > MAX_POWER_ATTR
+          || cardAttr3 > MAX_POWER_ATTR
+        ) {
+          return true;
+        }
+        if (
+          parseInt(cardAttr1, 10)
+          + parseInt(cardAttr2, 10)
+          + parseInt(cardAttr3, 10) <= MAX_POWER_TOTAL
+          && cardAttr1 + cardAttr2 + cardAttr3 > 0
+        ) {
+          return false;
+        }
+      }
+      return true;
+    },
   };
 
   handleChange = (event) => {
@@ -30,6 +66,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      saveButton,
     } = this.state;
     return (
       <div>
@@ -43,8 +80,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ false }
-          onSaveButtonClick={ false }
-          isSaveButtonDisabled={ false }
+          isSaveButtonDisabled={ saveButton() }
           onInputChange={ this.handleChange }
         />
         <Card
