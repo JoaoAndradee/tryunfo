@@ -98,6 +98,7 @@ class App extends React.Component {
               attr1: cardAttr1,
               attr2: cardAttr2,
               attr3: cardAttr3,
+              rare: cardRare,
               superTrunfo: cardTrunfo,
             };
             cardDeck.push(newCard);
@@ -126,6 +127,22 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <h2>Todas as suas Cartas</h2>
+        {
+          cardDeck.map((item, index) => (
+            <Card
+              cardName={ item.nome }
+              cardDescription={ item.description }
+              cardAttr1={ item.attr1 }
+              cardAttr2={ item.attr2 }
+              cardAttr3={ item.attr3 }
+              cardImage={ item.image }
+              cardRare={ item.rare }
+              cardTrunfo={ item.superTrunfo }
+              key={ index }
+            />
+          ))
+        }
       </div>
     );
   }
