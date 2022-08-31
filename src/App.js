@@ -11,7 +11,7 @@ class App extends React.Component {
     cardAttr3: '',
     cardImage: '',
     cardRare: 'normal',
-    cardTrunfo: '',
+    cardTrunfo: false,
     saveButton: () => {
       const {
         cardName,
@@ -48,6 +48,10 @@ class App extends React.Component {
       }
       return true;
     },
+    // Requisito 06
+    cardDeck: [],
+    // Fim 06
+    hasTrunfo: false,
   };
 
   handleChange = (event) => {
@@ -67,6 +71,10 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       saveButton,
+      // Requisito 06
+      cardDeck,
+      // Fim 06
+      hasTrunfo,
     } = this.state;
     return (
       <div>
@@ -79,10 +87,20 @@ class App extends React.Component {
           cardAttr3={ cardAttr3 }
           cardImage={ cardImage }
           cardRare={ cardRare }
-          cardTrunfo={ false }
+          cardTrunfo={ cardTrunfo }
           isSaveButtonDisabled={ saveButton() }
           // Requisito 06
           onSaveButtonClick={ () => {
+            const newCard = {
+              nome: cardName,
+              description: cardDescription,
+              image: cardImage,
+              attr1: cardAttr1,
+              attr2: cardAttr2,
+              attr3: cardAttr3,
+              superTrunfo: cardTrunfo,
+            };
+            cardDeck.push(newCard);
             this.setState({
               cardName: '',
               cardDescription: '',
@@ -91,10 +109,12 @@ class App extends React.Component {
               cardAttr2: '0',
               cardAttr3: '0',
               cardRare: 'normal',
+              hasTrunfo: cardTrunfo,
             });
           } }
           // FIM
           onInputChange={ this.handleChange }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           cardName={ cardName }
